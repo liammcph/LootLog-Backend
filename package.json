@@ -1,11 +1,12 @@
 {
   "name": "lootlog-backend",
   "version": "1.0.0",
+  "type": "commonjs",
   "main": "index.js",
 
   "scripts": {
-  "start": "node server.js",
-  "dev": "nodemon server.js"
+  "start": "index.js",
+  "dev": "index.js"
 },
 
   "keywords": [],
