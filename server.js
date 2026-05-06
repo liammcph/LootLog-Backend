@@ -4,6 +4,10 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const logger = require('morgan');
+const authController = require('./controllers/auth');
+const userController = require('./controllers/user');
+
+const verifyJwt = require('./middlewares/verify-jwt');
 
 
 require('./db/connection');
@@ -13,6 +17,9 @@ app.use(express.json());
 app.use(logger('dev'));
 
 // Routes
+app.use(verifyJwt);
+app.use('/auth', authController);
+app.use('/users', userController);
 
 
 
