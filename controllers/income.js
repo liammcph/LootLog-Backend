@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-
+const verifyToken = require('../middlewares/verify-jwt.js')
 const Income = require("../models/income.js");
 
 
-router.post('/', async (req, res) => {
+router.post('/', verifyToken, async (req, res) => {
     try {
         req.body.author = req.user._id
         if (!req.body.name) {
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.get('/', async (req, res) => {
+router.get('/', verifyToken, async (req, res) => {
     try {
         const income = await Income.find({})
         .populate("author")
@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/:incomeId', async (req, res) => {
+router.get('/:incomeId', verifyToken, async (req, res) => {
     try {
         const income = await Income.findById(req.params.incomeId)
         res.status(200).json(income)
@@ -40,7 +40,7 @@ router.get('/:incomeId', async (req, res) => {
     }
 })
 
-router.put('/update/:incomeId', async (req, res) => {
+router.put('/update/:incomeId', verifyToken, async (req, res) => {
     try {
         const income = await Income.findById(req.params.incomeId)
         if (!income.author.equals(req.user._id)) {
@@ -63,7 +63,7 @@ router.put('/update/:incomeId', async (req, res) => {
     }
 })
 
-router.delete('/delete/:incomeId', async (req, res) => {
+router.delete('/delete/:incomeId', verifyToken, async (req, res) => {
     try {
         const income = await Income.findById(req.params.incomeId)
         if (!income.author.equals(req.user._id)) {
