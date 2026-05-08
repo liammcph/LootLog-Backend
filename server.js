@@ -18,8 +18,8 @@ app.use(express.json());
 app.use(logger('dev'));
 
 // Routes
-app.use(verifyJwt);
 app.use('/auth', authController);
+app.use(verifyJwt);
 app.use('/users', userController);
 app.use('/goals', goalsRouter)
 
