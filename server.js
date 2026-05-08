@@ -6,6 +6,7 @@ const cors = require('cors');
 const logger = require('morgan');
 const authController = require('./controllers/auth');
 const userController = require('./controllers/user');
+const goalsRouter = require("./controllers/goals.js");
 
 const verifyJwt = require('./middlewares/verify-jwt');
 
@@ -20,7 +21,7 @@ app.use(logger('dev'));
 app.use(verifyJwt);
 app.use('/auth', authController);
 app.use('/users', userController);
-
+app.use('/goals', goalsRouter)
 
 
 
