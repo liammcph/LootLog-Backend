@@ -9,7 +9,7 @@ const userController = require('./controllers/user');
 
 const verifyJwt = require('./middlewares/verify-jwt');
 
-const incomeRouter = require('./controllers/income')
+const incomeRouter = require('./controllers/income');
 
 require('./db/connection');
 
@@ -18,17 +18,14 @@ app.use(express.json());
 app.use(logger('dev'));
 
 // Routes
-app.use('/income', incomeRouter)
-app.use(verifyJwt);
+
 app.use('/auth', authController);
+
+app.use(verifyJwt);
 app.use('/users', userController);
-
-
-
-
-
+app.use('/income', incomeRouter)
 
 
 app.listen(3000, () => {
   console.log('The express app is ready!');
-});
+})
