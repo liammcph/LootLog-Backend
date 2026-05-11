@@ -10,6 +10,7 @@ const goalsRouter = require("./controllers/goals.js");
 
 const verifyJwt = require('./middlewares/verify-jwt');
 
+const incomeRouter = require('./controllers/income');
 
 require('./db/connection');
 
@@ -18,10 +19,12 @@ app.use(express.json());
 app.use(logger('dev'));
 
 // Routes
+
 app.use('/auth', authController);
 app.use(verifyJwt);
 app.use('/users', userController);
-app.use('/goals', goalsRouter)
+app.use('/income', incomeRouter);
+app.use('/goals', goalsRouter);
 
 
 
