@@ -18,10 +18,10 @@ app.use(cors());
 app.use(express.json());
 app.use(logger('dev'));
 
-// Routes
-
 app.use('/auth', authController);
+
 app.use(verifyJwt);
+
 app.use('/users', userController);
 app.use('/income', incomeRouter);
 app.use('/goals', goalsRouter);
@@ -33,4 +33,4 @@ app.use('/goals', goalsRouter);
 
 app.listen(3000, () => {
   console.log('The express app is ready!');
-});
+})
