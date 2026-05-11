@@ -6,10 +6,12 @@ const cors = require('cors');
 const logger = require('morgan');
 const authController = require('./controllers/auth');
 const userController = require('./controllers/user');
+const goalsRouter = require("./controllers/goals.js");
 
 const verifyJwt = require('./middlewares/verify-jwt');
 
 const incomeRouter = require('./controllers/income');
+
 
 require('./db/connection');
 
@@ -20,10 +22,14 @@ app.use(logger('dev'));
 // Routes
 
 app.use('/auth', authController);
-
 app.use(verifyJwt);
 app.use('/users', userController);
-app.use('/income', incomeRouter)
+app.use('/income', incomeRouter);
+app.use('/goals', goalsRouter);
+
+
+
+
 
 
 app.listen(3000, () => {
