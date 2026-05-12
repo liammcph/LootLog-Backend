@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Goal = require('../models/goal.js');
 
+
 // POST /goals
 router.post('/', async (req, res) => {
   try {

@@ -28,7 +28,7 @@ app.use(verifyJwt);
 app.use('/users', userController);
 app.use('/income', incomeRouter);
 app.use('/expense', expenseRouter);
-app.use('/goals', goalsRouter);
+app.use('/goal', goalsRouter);
 
 app.listen(3000, () => {
   console.log('The express app is ready!');
