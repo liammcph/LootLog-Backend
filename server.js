@@ -19,6 +19,8 @@ app.use(cors());
 app.use(express.json());
 app.use(logger('dev'));
 
+// Routes
+
 app.use('/auth', authController);
 
 app.use(verifyJwt);

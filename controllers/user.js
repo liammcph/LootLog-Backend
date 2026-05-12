@@ -19,4 +19,8 @@ router.get("/me", async (req, res) => {
   }
 });
 
+router.post("/sign-out", (req, res) => {
+  res.status(200).json({ message: "Signed out" });
+});
+
 module.exports = router;
