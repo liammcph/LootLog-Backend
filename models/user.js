@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // Add in additional fields you want
   email: String,
   phoneNumber: String,
   address: String,
